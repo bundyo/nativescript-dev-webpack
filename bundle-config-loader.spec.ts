@@ -13,6 +13,7 @@ const defaultTestFiles = {
     "./app.css": true,
     "./app.android.scss": true,
     "./app.ios.scss": true,
+    "./app.desktop.scss": true,
     "./app.land.css": true,
     "./components/my-component.css": true,
     "./components/my-component.land.ts": true,

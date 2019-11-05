@@ -8,7 +8,7 @@ export interface PlatformFSPluginOptions {
     platform?: string;
 
     /**
-     * A list of all platforms. By default it is `["ios", "android"]`.
+     * A list of all platforms. By default it is `["ios", "android", "desktop"]`.
      */
     platforms?: string[];
 
@@ -26,7 +26,7 @@ export class PlatformFSPlugin {
 
     constructor({ platform, platforms, ignore }: PlatformFSPluginOptions) {
         this.platform = platform || "";
-        this.platforms = platforms || ["ios", "android"];
+        this.platforms = platforms || ["ios", "android", "desktop"];
         this.ignore = ignore || [];
     }
 

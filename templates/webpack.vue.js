@@ -21,12 +21,12 @@ module.exports = env => {
         "tns-core-modules/ui/frame/activity",
     ];
 
-    const platform = env && (env.android && "android" || env.ios && "ios");
+    const platform = env && (env.android && "android" || env.ios && "ios" || env.desktop && "desktop");
     if (!platform) {
         throw new Error("You need to provide a target platform!");
     }
 
-    const platforms = ["ios", "android"];
+    const platforms = ["ios", "android", "desktop"];
     const projectRoot = __dirname;
 
     // Default destination inside platforms/<platform>/...

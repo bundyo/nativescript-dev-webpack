@@ -17,12 +17,12 @@ module.exports = env => {
         "tns-core-modules/ui/frame/activity",
     ];
 
-    const platform = env && (env.android && "android" || env.ios && "ios");
+    const platform = env && (env.android && "android" || env.ios && "ios" || env.desktop && "desktop");
     if (!platform) {
         throw new Error("You need to provide a target platform!");
     }
 
-    const platforms = ["ios", "android"];
+    const platforms = ["ios", "android", "desktop"];
     const projectRoot = __dirname;
 
     // Default destination inside platforms/<platform>/...
@@ -34,7 +34,7 @@ module.exports = env => {
         appPath = "app",
         appResourcesPath = "app/App_Resources",
 
-        // You can provide the following flags when running 'tns run android|ios'
+        // You can provide the following flags when running 'tns run android|ios|desktop'
         snapshot, // --env.snapshot
         production, // --env.production
         uglify, // --env.uglify

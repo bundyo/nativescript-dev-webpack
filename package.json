@@ -28,7 +28,7 @@
     "url": "https://github.com/NativeScript/nativescript-dev-webpack.git"
   },
   "scripts": {
-    "tsc": "tsc",
+    "tsc": "tsc -w",
     "postinstall": "node postinstall.js",
     "preuninstall": "node preuninstall.js",
     "postpack": "rm -rf node_modules",

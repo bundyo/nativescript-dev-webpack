@@ -5,6 +5,7 @@ const {
     getPackageJson,
     isAndroid,
     isIos,
+    isDesktop
 } = require("./projectHelpers");
 
 Object.assign(exports, require("./plugins"));
@@ -103,6 +104,8 @@ exports.getAppPath = (platform, projectDir) => {
         return `platforms/ios/${sanitizedName}/app`;
     } else if (isAndroid(platform)) {
         return ANDROID_APP_PATH;
+    } else if (isDesktop(platform)) {
+        return `platforms/desktop/app`;
     } else {
         throw new Error(`Invalid platform: ${platform}`);
     }

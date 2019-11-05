@@ -13,6 +13,7 @@ const APP_NAME = APP_ID.substring(APP_ID.lastIndexOf(".") + 1);
 const PROJECT_PATHS = {
     android: path.resolve(PROJECT_DIR, "platforms/android/src/main/assets/app"),
     ios: path.resolve(PROJECT_DIR, `platforms/ios/build/emulator/${APP_NAME}.app/app`),
+    desktop: path.resolve(PROJECT_DIR, "platforms/desktop/app")
 };
 
 const npmArgs = JSON.parse(process.env.npm_config_argv).original;
@@ -57,7 +58,7 @@ function getMaxSize(flags) {
 }
 
 function getPlatform(flags) {
-    if (flags.includes("android") && flags.includes("ios")) {
+    if (flags.includes("android") && flags.includes("ios") && flags.includes("desktop")) {
         throwError({message: "You cannot use both --android and --ios flags!"});
     }
 
@@ -65,6 +66,8 @@ function getPlatform(flags) {
         return "android";
     } else if (flags.includes("ios")) {
         return "ios";
+    } else if (flags.includes("desktop")) {
+        return "desktop";
     } else {
         throwError({message: "You must provide a target platform! Use either --android, or --ios flag."});
     }
