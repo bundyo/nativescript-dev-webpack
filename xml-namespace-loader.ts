@@ -101,6 +101,7 @@ const loader: loader.Loader = function (source: string, map) {
     (<any>saxParser).ns["ios"] = "http://schemas.nativescript.org/tns.xsd";
     (<any>saxParser).ns["android"] = "http://schemas.nativescript.org/tns.xsd";
     (<any>saxParser).ns["desktop"] = "http://schemas.nativescript.org/tns.xsd";
+    (<any>saxParser).ns["web"] = "http://schemas.nativescript.org/tns.xsd";
 
     saxParser.onopentag = (node: QualifiedTag) => { handleOpenTag(node.uri, node.local); };
     saxParser.onerror = (err) => {

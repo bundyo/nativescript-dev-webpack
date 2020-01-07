@@ -17,13 +17,17 @@ module.exports = env => {
         "tns-core-modules/ui/frame/activity",
     ];
 
-    const platform = env && (env.android && "android" || env.ios && "ios" || env.desktop && "desktop");
+    const platform = env && (env.android && "android" || env.ios && "ios" || env.platform);
     if (!platform) {
         throw new Error("You need to provide a target platform!");
     }
 
-    const platforms = ["ios", "android", "desktop"];
+    const platforms = ["ios", "android"];
     const projectRoot = __dirname;
+
+    if (env.platform) {
+        platforms.push(env.platform);
+    }
 
     // Default destination inside platforms/<platform>/...
     const dist = resolve(projectRoot, nsWebpack.getAppPath(platform, projectRoot));
@@ -34,7 +38,7 @@ module.exports = env => {
         appPath = "app",
         appResourcesPath = "app/App_Resources",
 
-        // You can provide the following flags when running 'tns run android|ios|desktop'
+        // You can provide the following flags when running 'tns run android|ios'
         snapshot, // --env.snapshot
         production, // --env.production
         uglify, // --env.uglify

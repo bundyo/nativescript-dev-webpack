@@ -96,8 +96,7 @@ describe('webpack.config.js', () => {
         const { type, webpackConfig } = element;
         [
             'android',
-            'ios',
-            'desktop'
+            'ios'
         ].forEach(platform => {
             describe(`verify externals for webpack.${type}.js (${platform})`, () => {
                 afterEach(() => {

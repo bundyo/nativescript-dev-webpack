@@ -91,7 +91,6 @@ const getNsConfigPath = projectDir => resolve(projectDir, "nsconfig.json");
 
 const isAndroid = platform => /android/i.test(platform);
 const isIos = platform => /ios/i.test(platform);
-const isDesktop = platform => /desktop/i.test(platform);
 
 function safeGet(object, property, ...args) {
     if (!object) {
@@ -123,7 +122,6 @@ module.exports = {
     getProjectDir,
     isAndroid,
     isIos,
-    isDesktop,
     isAngular,
     isShared,
     getAngularVersion,
