@@ -105,12 +105,6 @@ export function mapFileSystem(args: MapFileSystemArgs): any {
             require.resolve(platformFilePath);
         } catch (e) {
             if (isExternal && dir.indexOf("/@nativescript/core/") !== -1) {
-
-                if (name.endsWith(".d")) {
-                    platformFilePath = join(dir, name.replace(/\.d$/g, ".d.ts"));
-                    console.log(platformFilePath);
-                }
-
                 let replacedPath;
                 try {
                     replacedPath = dir.replace(
@@ -121,7 +115,11 @@ export function mapFileSystem(args: MapFileSystemArgs): any {
                     platformFilePath = require.resolve(join(replacedPath, `${name}.${platform}${ext}`));
                 } catch (e) {
                     if (replacedPath) {
-                        platformFilePath = join(replacedPath, `${name}${ext}`);
+                        if (ext === ".d") {
+                            platformFilePath = undefined;
+                        } else {
+                            platformFilePath = join(replacedPath, `${name}${ext}`);
+                        }
                     }
                 }
             }
